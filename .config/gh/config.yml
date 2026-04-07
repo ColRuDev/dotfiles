@@ -1,0 +1,5 @@
+git_protocol: ssh
+prompt: enabled
+editor: zeditor --wait
+pager: less
+version: "1"

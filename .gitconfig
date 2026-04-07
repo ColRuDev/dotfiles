@@ -1,0 +1,11 @@
+[core]
+	editor = zeditor --wait
+[user]
+	email = 47890683+NickEsColR@users.noreply.github.com
+	name = ColRuDev
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
