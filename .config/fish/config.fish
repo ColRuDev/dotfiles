@@ -6,7 +6,16 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 #    # smth smth
 #end
 
-#YADM abbreviations
+# YADM abbreviations
 abbr -a ya yadm add
 abbr -a ys yadm status
+abbr -a yp yadm push
 abbr -a yc --set-cursor "yadm commit -m \"%\""
+
+# Update abbr
+abbr -a up sudo pacman -Syu
+abbr -a fup flatpak update
+
+# AI tools
+abbr -a oc opencode
+abbr -a gai gentle-ai
