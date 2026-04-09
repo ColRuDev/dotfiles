@@ -13,7 +13,8 @@ binds {
     Mod+Period                          hotkey-overlay-title="Search Emoji" { spawn-sh "qs -c noctalia-shell ipc call plugin:kaomoji toggle"; }
 
     // ─── Applications ───
-    Mod+Return                          hotkey-overlay-title="Open Terminal: Warp" { spawn "warp-terminal"; }
+    Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
+    Mod+Shift+Return                    hotkey-overlay-title="Open Terminal: Warp" { spawn "warp-terminal"; }
     Mod+S                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
     Mod+I                               hotkey-overlay-title="Open IDE: Zed" { spawn "zeditor"; }
