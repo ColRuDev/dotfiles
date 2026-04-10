@@ -1,8 +1,6 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "modules": [
-    "title",
-    "separator",
     "os",
     "host",
     "kernel",
@@ -24,7 +22,6 @@
     "memory",
     "swap",
     "disk",
-    "localip",
     "battery",
     "poweradapter",
     "locale",
