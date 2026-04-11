@@ -17,5 +17,5 @@ abbr -a up sudo pacman -Syu
 abbr -a fup flatpak update
 
 # AI tools
-abbr -a oc opencode
+abbr -a oc tmux new-session -A -s opencode_session \"command opencode\"
 abbr -a gai gentle-ai
