@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - [name]:/app/[dep-dir]
+    command: [start-command]
+
+volumes:
+  [name]:
