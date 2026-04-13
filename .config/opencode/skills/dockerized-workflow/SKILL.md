@@ -7,7 +7,7 @@ description: >
 license: Apache-2.0
 metadata:
   author: ColRuDev
-  version: "1.0"
+  version: "1.1"
 ---
 
 ## When to Use
@@ -49,6 +49,26 @@ project/
 - **Node**: Named volume for `node_modules` and `.bin` — keeps local clean, allows fast installs
 - **Go/Ruby/Rust**: Named volume for cache dirs
 
+### Port Exposure
+
+Applications that serve HTTP (web servers, dev servers, etc.) must expose their internal port to the host:
+
+| Runtime | Internal Port | Example |
+|---------|---------------|---------|
+| Astro | 4321 | `4321:4321` |
+| Next.js | 3000 | `3000:3000` |
+| Vite | 5173 | `5173:5173` |
+| Django | 8000 | `8000:8000` |
+| Flask | 5000 | `5000:5000` |
+| Ruby on Rails | 3000 | `3000:3000` |
+
+The `ports` directive in docker-compose.yml maps container port to host port:
+
+```yaml
+ports:
+  - 4321:4321  # host:container
+```
+
 ### Key Rules
 
 1. **Never run package manager on host** — always `docker compose exec app <pm> <cmd>`
@@ -74,126 +94,6 @@ logs   → docker compose logs -f          # Follow logs
 clean  → docker compose down -v           # Remove volumes too
 ```
 
-## Runtime-Specific Dockerfile Templates
-
-### Python + uv
-
-```dockerfile
-FROM python:3.14-slim
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uv/bin/uv
-ENV PATH="/uv/bin:$PATH"
-WORKDIR /app
-COPY pyproject.toml ./
-RUN uv sync --no-dev
-COPY . .
-```
-
-### Node + pnpm
-
-```dockerfile
-FROM node:24-alpine
-RUN npm install -g pnpm
-WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-COPY . .
-```
-
-### Node + bun
-
-```dockerfile
-FROM oven/bun:1-alpine
-WORKDIR /app
-COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile
-COPY . .
-```
-
-### Node + npm
-
-```dockerfile
-FROM node:22-alpine
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY . .
-```
-
-### Go
-
-```dockerfile
-FROM golang:1.23-alpine
-WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
-COPY . .
-```
-
-### Ruby
-
-```dockerfile
-FROM ruby:3.3-alpine
-WORKDIR /app
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
-COPY . .
-```
-
-### Rust
-
-```dockerfile
-FROM rust:1.75-alpine
-WORKDIR /app
-COPY Cargo.toml ./
-RUN cargo build --release
-COPY . .
-```
-
-## docker-compose.yml Template
-
-```yaml
-services:
-  app:
-    build: .
-    volumes:
-      - .:/app
-      - [name]:/app/[dep-dir]
-    command: [start-cmd]
-
-volumes:
-  [name]:
-```
-
-Where `[start-cmd]` by runtime:
-
-- Python: `uv run python main.py`
-- Node (pnpm/bun/npm): `pnpm dev` / `bun dev` / `npm run dev`
-- Go: `go run main.go`
-- Ruby: `bundle exec ruby main.rb`
-- Rust: `cargo run`
-
-## Makefile Template
-
-```makefile
-.PHONY: up down add sync run sh logs clean
-APP := app
-PM := [package-manager]
-RUN := [run-command]
-
-up:    docker compose up -d
-down:  docker compose down
-stop:  docker compose stop
-
-add:
- @docker compose exec $(APP) $(PM) add $(filter-out $@,$(MAKECMDGOALS))
-sync:  docker compose exec $(APP) $(PM) sync
-run:   docker compose exec $(APP) $(PM) $(RUN)
-
-sh:    docker compose run --rm $(APP) sh
-logs:  docker compose logs -f
-clean: docker compose down -v
-```
-
 ## Workflow
 
 1. **Scan project** — detect runtime and package manager
@@ -212,4 +112,3 @@ clean: docker compose down -v
 - **Rust template**: See [assets/rust.dockerfile](assets/rust.dockerfile)
 - **docker-compose template**: See [assets/docker-compose.yml](assets/docker-compose.yml)
 - **Makefile template**: See [assets/Makefile](assets/Makefile)
-

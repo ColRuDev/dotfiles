@@ -4,6 +4,8 @@ services:
     volumes:
       - .:/app
       - [name]:/app/[dep-dir]
+    ports:
+      - [port]:[port]
     command: [start-command]
 
 volumes:
