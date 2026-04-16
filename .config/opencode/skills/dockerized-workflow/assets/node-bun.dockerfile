@@ -1,4 +1,4 @@
-FROM oven/bun:1-alpine
+FROM dhi.io/bun:1-debian13-dev
 
 WORKDIR /app
 
