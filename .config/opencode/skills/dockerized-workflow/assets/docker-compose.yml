@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    build: 
+      context: .
+      target: base
+    user: "${UID}:${GUID}"
     volumes:
       - .:/app
       - /app/[dep-dir]
@@ -8,12 +11,10 @@ services:
       - /app/.pnpm-store
       - pnpm_store:/root/.local/share/pnpm/store
     ports:
-      - [port]:[port]
+      - (port):(port)
     environment:
       # for pnpm
       - PNPM_HOME=/root/.local/share/pnpm
       - PNPM_CONFIG_STORE_DIR=/root/.local/share/pnpm/store
     command: [start-command]
 
-volumes:
-  [name]:

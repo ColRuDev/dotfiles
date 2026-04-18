@@ -7,15 +7,15 @@ description: >
 license: Apache-2.0
 metadata:
   author: ColRuDev
-  version: "1.1"
+  version: "1.2"
 ---
 
 ## When to Use
 
 - Starting a new project and wanting Docker isolation from day one
 - Existing project needs Dockerized dependencies
-- User wants to run `make up`, `make add <pkg>`, `make run` instead of `docker compose exec`
-- Any language: Python (uv), Node (pnpm, bun, npm), Go, Ruby, Rust
+- User wants to run `make up`, `make add <pkg>`
+- Any language: Python (uv), Node (pnpm, npm, yarn) Bun, Go, Ruby, Rust
 
 ## Critical Patterns
 
@@ -26,7 +26,7 @@ The skill must detect runtime and package manager in this order:
 ```
 if pyproject.toml        → Python + uv
 else if package.json + pnpm-lock.yaml  → Node + pnpm
-else if package.json + bun.lockb       → Node + bun
+else if package.json + bun.lock*       → Bun
 else if package.json                     → Node + npm (fallback)
 else if go.mod         → Go + go
 else if Gemfile        → Ruby + bundle
@@ -37,6 +37,7 @@ else if Cargo.toml     → Rust + cargo
 
 ```
 project/
+├── .dockerignore       # Ignore local .venv, node_modules, etc.
 ├── Dockerfile           # Runtime + package manager installed
 ├── docker-compose.yml   # Volume for .venv/node_modules/.bin
 ├── Makefile            # Abstractions for docker compose commands
@@ -61,6 +62,7 @@ Applications that serve HTTP (web servers, dev servers, etc.) must expose their 
 | Django | 8000 | `8000:8000` |
 | Flask | 5000 | `5000:5000` |
 | Ruby on Rails | 3000 | `3000:3000` |
+| Bun | 5173 | 5173:5173 |
 
 The `ports` directive in docker-compose.yml maps container port to host port:
 
@@ -81,34 +83,35 @@ ports:
 All runtimes support these Makefile targets:
 
 ```makefile
-.PHONY: up down add sync run sh logs clean
+.PHONY: dev build down clean add sync sync-host sh logs
 
-up     → docker compose up -d           # Start in background
+dev     → docker compose up -d           # Start in background
+build   → docker compose build            # Build/rebuild image
 down   → docker compose down             # Stop and remove
-stop   → docker compose stop             # Stop without removing
+clean  → docker compose down -v         # Stop and remove with volumes
 add    → docker compose exec app <pm> add # Add dependency(ies)
 sync   → docker compose exec app <pm> sync # Install all deps
-run    → docker compose exec app <pm> run # Run main script/binary
+sync-host → <pm> sync --ignore-scripts # Sync on host (if needed)
 sh     → docker compose run --rm app sh  # Interactive shell
 logs   → docker compose logs -f          # Follow logs
-clean  → docker compose down -v           # Remove volumes too
 ```
 
 ## Workflow
 
 1. **Scan project** — detect runtime and package manager
-2. **Generate Dockerfile** — using the correct template
-3. **Generate docker-compose.yml** — with proper volume strategy
-4. **Generate Makefile** — with runtime-specific PM and RUN commands
-5. **Build initial image** — `docker compose build`
+2. Generate `.dockerignore` — ignore local dependency dirs and build artifacts
+3. **Generate Dockerfile** — using the correct template
+4. **Generate docker-compose.yml** — with proper volume strategy
+5. **Generate Makefile** — with runtime-specific PM and RUN commands
 
 ## Resources
 
 - **Python/uv template**: See [assets/python-uv.dockerfile](assets/python-uv.dockerfile)
 - **Node/pnpm template**: See [assets/node-pnpm.dockerfile](assets/node-pnpm.dockerfile)
-- **Node/bun template**: See [assets/node-bun.dockerfile](assets/node-bun.dockerfile)
+- **Bun template**: See [assets/node-bun.dockerfile](assets/bun.dockerfile)
 - **Go template**: See [assets/go.dockerfile](assets/go.dockerfile)
 - **Ruby template**: See [assets/ruby.dockerfile](assets/ruby.dockerfile)
 - **Rust template**: See [assets/rust.dockerfile](assets/rust.dockerfile)
 - **docker-compose template**: See [assets/docker-compose.yml](assets/docker-compose.yml)
 - **Makefile template**: See [assets/Makefile](assets/Makefile)
+- .dockerignore template: See [assets/.dockerignore](assets/.dockerignore)
