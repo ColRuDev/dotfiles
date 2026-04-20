@@ -3,13 +3,14 @@ services:
     build: 
       context: .
       target: base
-    user: "${UID}:${GUID}"
     volumes:
       - .:/app
       - /app/[dep-dir]
       # for pnpm
       - /app/.pnpm-store
       - pnpm_store:/root/.local/share/pnpm/store
+      #for svelte-kit
+      - /app/.svelte-kit
     ports:
       - (port):(port)
     environment:

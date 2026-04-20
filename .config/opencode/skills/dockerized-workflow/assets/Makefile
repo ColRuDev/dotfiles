@@ -1,18 +1,17 @@
-.PHONY: up down add sync run sh logs clean
+.PHONY: dev build down add sync sync-host sh logs clean
 
-USER_ID := $(shell id -u)
-GROUP_ID := $(shell id -g)
-DOCKER_COMPOSE := UID=$(USER_ID) GID=$(GROUP_ID) docker compose
+DOCKER_COMPOSE := docker compose
 ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 
 APP  := app
-PM   := bun
-ADD := add
-DEV_FLAG := --dev
-SYNC := install
-RUN  := run dev
+PM   := (package_manager)
+ADD := (add_command)
+DEV_FLAG := (dev_flag)
+SYNC := (sync_command)
 
 dev:
+	@echo "${USER_ID}:${GROUP_ID}"
+	@mkdir -p (generated_dirs)
 	$(DOCKER_COMPOSE) up
 
 build: 
@@ -27,6 +26,10 @@ clean:
 
 add:
 	@$(DOCKER_COMPOSE) exec $(APP) $(PM) $(ADD) $(ARGS)
+	@$(MAKE) sync-host
+
+add-dev:
+	@$(DOCKER_COMPOSE) exec $(APP) $(PM) $(ADD) $(DEV_FLAG) $(ARGS)
 	@$(MAKE) sync-host
 
 sync:
