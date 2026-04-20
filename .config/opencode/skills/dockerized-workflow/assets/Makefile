@@ -1,8 +1,8 @@
 .PHONY: up down add sync run sh logs clean
 
-UID := $(shell id -u)
-GID := $(shell id -g)
-DOCKER_COMPOSE := UID=$(UID) GID=$(GID) docker compose
+USER_ID := $(shell id -u)
+GROUP_ID := $(shell id -g)
+DOCKER_COMPOSE := UID=$(USER_ID) GID=$(GROUP_ID) docker compose
 ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 
 APP  := app
