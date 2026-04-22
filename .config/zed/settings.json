@@ -42,13 +42,71 @@
     "diagnostics": false,
     "metrics": false,
   },
-  "icon_theme": "Zed (Default)",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Material Icon Theme",
+    "dark": "Zed (Default)",
+  },
   "ui_font_size": 20,
   "buffer_font_size": 18,
   "buffer_font_family": ".ZedMono",
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "GitHub Dark",
+    "dark": "Transparent Prism - Frost",
+  },
+  "theme_overrides": {
+    "Transparent Prism - Frost": {
+      "syntax": {
+        "attribute": {
+          "color": "#5A7BE6FF",
+        },
+        "constructor": {
+          "color": "#FC618DFF",
+        },
+        "function": {
+          "color": "#D2A8FFFF",
+        },
+        "keyword": {
+          "color": "#FF7B72FF",
+        },
+        "link_uri": {
+          "color": "#79C0FFFF",
+        },
+        "operator": {
+          "color": "#FF7B72FF",
+        },
+        "preproc": {
+          "color": "#FF7B72FF",
+        },
+        "string": {
+          "color": "#A5D6FFFF",
+        },
+        "string.escape": {
+          "color": "#FF7B72FF",
+        },
+        "string.regex": {
+          "color": "#A5D6FFFF",
+        },
+        "string.special": {
+          "color": "#79C0FFFF",
+        },
+        "string.special.symbol": {
+          "color": "#79C0FFFF",
+        },
+        "text.literal": {
+          "color": "#79C0FFFF",
+        },
+        "type": {
+          "color": "#FFA657FF",
+        },
+        "enum": {
+          "color": "#FFA657FF",
+        },
+        "variant": {
+          "color": "#FFA657FF",
+        },
+      },
+    },
   },
 }
