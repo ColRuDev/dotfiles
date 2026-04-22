@@ -16,6 +16,10 @@
        open-focused false
     }
 
+    window-rule {
+        match app-id="^*$"
+        draw-border-with-background false
+    }
 
     layer-rule {
         match namespace="^noctalia-wallpaper*"
