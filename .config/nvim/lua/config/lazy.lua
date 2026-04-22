@@ -57,6 +57,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		-- AI plugins
 		{ import = "lazyvim.plugins.extras.ai.copilot" },
+
+		{ import = "plugins" },
 	},
 
 	-- Configure any other settings here. See the documentation for more details.
