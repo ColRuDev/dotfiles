@@ -19,3 +19,7 @@ abbr -a fup flatpak update
 # AI tools
 abbr -a oc tmux new-session \"command opencode\"
 abbr -a gai gentle-ai
+
+# Editors
+abbr -a z zeditor
+abbr -a v nvim
