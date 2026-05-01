@@ -7,6 +7,7 @@ binds {
     // https://docs.noctalia.dev/getting-started/keybinds/
 
     Mod+Shift+ESCAPE                    { show-hotkey-overlay; }
+    Mod+Shift+R                         hotkey-overlay-title="Restart noctalia-shell" { spawn-sh "qs -c noctalia-shell"; }
     // --- Plugins ---
     Mod+V                               hotkey-overlay-title="Open Clipboard" { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
     Mod+Z                               hotkey-overlay-title="Open Zed history" { spawn-sh "qs -c noctalia-shell ipc call plugin:zed-provider toggle"; }
