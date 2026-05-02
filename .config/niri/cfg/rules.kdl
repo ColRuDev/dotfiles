@@ -21,6 +21,11 @@
         draw-border-with-background false
     }
 
+    window-rule {
+      match app-id="com.github.th_ch.youtube_music"
+      opacity 0.8
+    }
+
     layer-rule {
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true
