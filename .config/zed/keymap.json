@@ -28,5 +28,10 @@
     "unbind": {
       "ctrl-h": "search::ToggleReplace"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-d o": "projects::OpenDevContainer"
+    }
   }
 ]
