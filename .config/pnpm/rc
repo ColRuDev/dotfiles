@@ -1,0 +1,23 @@
+# Supply chain security controls
+
+# Block newly published packages — 3-day cooldown (4320 minutes)
+# Gives the community time to detect and remove malicious packages
+minimumReleaseAge: 4320
+
+# Enforce strict mode: fail resolution if no version satisfies the age constraint
+# (instead of silently falling back to a too-new version)
+minimumReleaseAgeStrict: true
+
+# Exclude trusted packages from the age gate
+minimumReleaseAgeExclude:
+  - "@types/node"
+  - "@types/bun"
+  - "typescript"
+
+# Block packages whose trust evidence is weaker than previously published versions
+# e.g. if v1.0 was published with Trusted Publisher but v1.0.1 uses basic auth → blocked
+trustPolicy: no-downgrade
+
+# strictDepBuilds is true by default in pnpm v10+
+# Lifecycle scripts are already blocked unless explicitly allowed via allowBuilds
+# No need to set ignoreScripts=true (that would also skip YOUR project scripts)

@@ -1,0 +1,10 @@
+[install]
+# Block lifecycle scripts (preinstall, install, postinstall, prepare) to mitigate supply chain attacks
+ignoreScripts = true
+
+# Only install package versions published at least 3 days ago (259200 seconds)
+# Gives time for malicious packages to be detected and removed
+minimumReleaseAge = 259200
+
+# Exclude trusted packages from the age gate
+minimumReleaseAgeExcludes = ["@types/node", "@types/bun", "typescript"]

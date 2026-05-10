@@ -1,1 +1,7 @@
-  exclude-newer = "7 days"
+# Supply chain security: only resolve packages published at least 7 days ago
+# Gives the community time to detect and remove malicious packages
+exclude-newer = "7 days"
+
+# Exclude trusted packages from the cooldown
+# setuptools and pip are fundamental infra that we trust
+exclude-newer-package = { setuptools = false, pip = false }
