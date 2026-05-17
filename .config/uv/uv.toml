@@ -1,6 +1,6 @@
-# Supply chain security: only resolve packages published at least 7 days ago
+# Supply chain security: only resolve packages published
 # Gives the community time to detect and remove malicious packages
-exclude-newer = "7 days"
+exclude-newer = "3 days"
 
 # Exclude trusted packages from the cooldown
 # setuptools and pip are fundamental infra that we trust
