@@ -33,5 +33,17 @@
     "bindings": {
       "ctrl-d o": "projects::OpenDevContainer"
     }
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "bindings": {
+      "ctrl-alt-shift-e": "pane::RevealInProjectPanel"
+    }
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-shift-e": "pane::RevealInProjectPanel"
+    }
   }
 ]

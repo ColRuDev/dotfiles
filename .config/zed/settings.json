@@ -127,6 +127,7 @@
           "color": "#FFA657FF",
         },
       },
+      "panel.focused_border": "#0404BD54",
     },
   },
 }
