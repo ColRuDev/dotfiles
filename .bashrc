@@ -17,3 +17,4 @@ if [ -d "$HOME/.local/share/flatpak/exports/share" ]; then
 fi
 
 . "$HOME/.local/bin/env"
+export PATH="$HOME/.local/bin:$PATH"
