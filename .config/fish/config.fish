@@ -16,6 +16,7 @@ abbr -a yc --set-cursor "yadm commit -m \"%\""
 abbr -a up sudo pacman -Syu
 abbr -a fup flatpak update
 abbr -a pup paru -Sua
+abbr -a autoremove sudo pacman -Rns $(pacman -Qtdq)
 
 # AI tools
 abbr -a oc tmux new-session \"command opencode\"
