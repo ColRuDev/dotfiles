@@ -5,7 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+# CachyOS Zsh config — optional, only on CachyOS/Arch
+[[ -f /usr/share/cachyos-zsh-config/cachyos-config.zsh ]] && \
+  source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+
 # Flatpak PATH fix
 if [ -d "/var/lib/flatpak/exports/share" ]; then
     export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
@@ -14,7 +17,8 @@ if [ -d "$HOME/.local/share/flatpak/exports/share" ]; then
     export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 fi
 
-. "$HOME/.local/bin/env"
+# Runtime env (mise/nix/asdf) — only if the file exists
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

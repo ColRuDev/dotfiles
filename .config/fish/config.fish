@@ -1,4 +1,5 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+# CachyOS Fish config — optional, only on CachyOS/Arch
+test -f /usr/share/cachyos-fish-config/cachyos-config.fish && source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # overwrite greeting
 # potentially disabling fastfetch
@@ -12,17 +13,30 @@ abbr -a ys yadm status
 abbr -a yp yadm push
 abbr -a yc --set-cursor "yadm commit -m \"%\""
 
-# Update abbr
-abbr -a up sudo pacman -Syu
-abbr -a fup flatpak update
-abbr -a pup paru -Sua
-abbr -a autoremove sudo pacman -Rns $(pacman -Qtdq)
+# Package Management abbreviationse
+if commnad -q pacman
+    abbr -a up sudo pacman -Syu
+    abbr -a autoremove sudo pacman -Rns $(pacman -Qtdq)
+    abbr -a pup paru -Sua
+else if command -q dnf
+    abbr -a up sudo dnf upgrade
+    abbr -a autoremove sudo dnf autoremove
+else if command -q pikman
+    abbr -a up "pikman update & pikman upgrade"
+    abbr -a autoremove sudo
+else if command -q apt
+    abbr -a up "sudo apt update && sudo apt upgrade -y"
+    abbr -a autoremove sudo apt autoremove
 
-# AI tools
+end
+
+abbr -a fup flatpak update
+
+# AI tools abbreviations
 abbr -a oc tmux new-session \"command opencode\"
 abbr -a gai gentle-ai
 
-# Editors
+# Editors abbreviations
 abbr -a z zeditor
 abbr -a v nvim
 

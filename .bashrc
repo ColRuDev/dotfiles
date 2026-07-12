@@ -10,11 +10,12 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$'
 # Flatpak PATH fix
 if [ -d "/var/lib/flatpak/exports/share" ]; then
-    export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+  export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 fi
 if [ -d "$HOME/.local/share/flatpak/exports/share" ]; then
-    export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+  export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 fi
 
-. "$HOME/.local/bin/env"
+# Runtime env (mise/nix/asdf) — only if the file exists
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 export PATH="$HOME/.local/bin:$PATH"

@@ -4,4 +4,5 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-. "$HOME/.local/bin/env"
+# Runtime env (mise/nix/asdf) — only if the file exists
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
