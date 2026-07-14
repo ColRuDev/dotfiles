@@ -16,16 +16,16 @@ abbr -a yc --set-cursor "yadm commit -m \"%\""
 # Package Management abbreviationse
 if which pacman >/dev/null 2>&1
     abbr -a up sudo pacman -Syu
-    abbr -a autoremove sudo pacman -Rns $(pacman -Qtdq)
+    abbr -a autoremove 'sudo pacman -Rns $(pacman -Qtdq)'
     abbr -a pup paru -Sua
 else if which dnf >/dev/null 2>&1
     abbr -a up sudo dnf upgrade
     abbr -a autoremove sudo dnf autoremove
 else if which pikman >/dev/null 2>&1
-    abbr -a up "pikman update & pikman upgrade"
+    abbr -a up 'pikman update; and pikman upgrade'
     abbr -a autoremove sudo
 else if which apt >/dev/null 2>&1
-    abbr -a up "sudo apt update && sudo apt upgrade -y"
+    abbr -a up 'sudo apt update; and sudo apt upgrade -y'
     abbr -a autoremove sudo apt autoremove
 
 end
