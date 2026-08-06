@@ -40,6 +40,9 @@ abbr -a gai gentle-ai
 abbr -a z zeditor
 abbr -a v nvim
 
+# Rename abbreviations
+abbr -a renamemusic 'find . -type f -name \'*audio*\' -exec bash -c \'for f; do mv "$f" "${f%%audio*}.${f##*.}"; done\' _ {} +'
+
 # pnpm
 set -gx PNPM_HOME "/home/nickescolr/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
