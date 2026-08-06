@@ -22,8 +22,16 @@
     }
 
     window-rule {
-      match app-id="com.github.th_ch.youtube_music"
-      opacity 0.8
+      match app-id="^com.github.th-ch.youtube-music$"
+      opacity 0.85
+      background-effect {
+          xray true
+     
+      }
+      popups {
+          opacity 1.0
+      
+      }
     }
 
     layer-rule {
