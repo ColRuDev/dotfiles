@@ -34,6 +34,16 @@
       }
     }
 
+    window-rule {
+        match app-id="^com.github.wwmm.easyeffects$"
+        opacity 0.85
+    }
+
+    window-rule {
+      match app-id="discord"
+      opacity 0.85
+    }
+
     layer-rule {
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true
