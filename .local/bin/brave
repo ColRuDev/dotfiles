@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -x /usr/bin/brave-browser ]; then
+    exec /usr/bin/brave-browser "$@"
+elif [ -x /usr/bin/brave ]; then
+    exec /usr/bin/brave "$@"
+else
+    printf '%s\n' "Error: neither brave-browser nor brave was found" >&2
+    exit 127
+fi

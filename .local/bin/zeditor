@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -x "$HOME/.local/bin/zed" ] && [ "$HOME/.local/bin/zed" != "$0" ]; then
+    exec "$HOME/.local/bin/zed" "$@"
+elif [ -x /usr/bin/zeditor ]; then
+    exec /usr/bin/zeditor "$@"
+else
+    printf '%s\n' "Error: neither zed nor zeditor was found" >&2
+    exit 127
+fi
