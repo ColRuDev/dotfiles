@@ -7,6 +7,13 @@ test -f /usr/share/cachyos-fish-config/cachyos-config.fish && source /usr/share/
 #    # smth smth
 #end
 
+# Run fastfetch as welcome message (portable, works on any distro)
+if command -q fastfetch
+    function fish_greeting
+        fastfetch
+    end
+end
+
 # YADM abbreviations
 abbr -a ya yadm add
 abbr -a ys yadm status
