@@ -29,7 +29,7 @@
     "colors"
   ],
   "logo": {
-    "source": "/home/nickescolr/Imágenes/spiderman_logo.txt", // Aquí pones el nombre o la ruta al archivo
+    "source": "~/.config/fastfetch/spiderman_logo.txt", // Aquí pones el nombre o la ruta al archivo
     "type": "auto",         // Detecta si es imagen o ASCII
     "color": {
         "1": "red",        // Puedes cambiar los colores del logo por ID
