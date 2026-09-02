@@ -50,6 +50,9 @@ abbr -a v nvim
 # Rename abbreviations
 abbr -a renamemusic 'find . -type f -name \'*audio*\' -exec bash -c \'for f; do mv "$f" "${f%%audio*}.${f##*.}"; done\' _ {} +'
 
+# Save clipboard image to current folder
+abbr -a save-clip-image 'wl-paste -t image/png > image.png'
+
 # pnpm
 set -gx PNPM_HOME "/home/nickescolr/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
