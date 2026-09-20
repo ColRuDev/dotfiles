@@ -37,6 +37,7 @@ binds {
     // ─── Brightness Controls ───
     XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+    Mod+N                               { spawn-sh "noctalia msg nightlight-toggle"; }
 
     // ─── Window Movement and Focus ───
     Mod+W                               { close-window; }
