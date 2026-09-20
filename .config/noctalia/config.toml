@@ -1,0 +1,165 @@
+# Curated Noctalia v5 beta.9 migration from settings.json.
+
+[shell]
+font_family = "Noto Serif CJK HK Light"
+telemetry_enabled = false
+avatar_path = "/home/nickescolr/Imágenes/avatar.jpeg"
+clipboard_auto_paste = "off"
+clipboard_image_action_command = ""
+
+[shell.animation]
+enabled = true
+speed = 1.0
+
+[shell.shadow]
+direction = "down_right"
+
+[shell.panel]
+transparency_mode = "soft"
+borders = false
+shadow = true
+launcher_placement = "floating"
+launcher_position = "center"
+control_center_placement = "attached"
+open_near_click_control_center = true
+
+[shell.launcher]
+categories = true
+sort_by_usage = true
+pinned = ["dev.warp.Warp", "dev.zed.Zed", "com.discordapp.Discord"]
+auto_paste = "off"
+
+[shell.mpris]
+blacklist = []
+
+[wallpaper]
+enabled = false
+fill_mode = "crop"
+directory = "/home/nickescolr/Pictures/Wallpapers"
+transition = ["fade", "disc", "stripes", "wipe", "honeycomb"]
+transition_duration = 1500
+edge_smoothness = 0.05
+
+[wallpaper.automation]
+enabled = false
+interval_secondfalses = 300
+order = "random"
+
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "GitHub Dark"
+pure_black_dark = false
+
+[notification]
+enable_daemon = true
+position = "top_right"
+layer = "overlay"
+background_opacity = 1.0
+
+[osd]
+enabled = true
+position = "top_right"
+background_opacity = 1.0
+
+[weather]
+enabled = true
+unit = "celsius"
+effects = true
+
+[location]
+auto_locate = false
+address = "Cali"
+sunset = "18:30"
+sunrise = "06:30"
+
+[audio]
+enable_overdrive = false
+enable_sounds = false
+
+[brightness]
+enable_ddcutil = false
+minimum_brightness = 0.0
+
+[brightness.monitor.eDP-1]
+backend = "backlight"
+backlight_device = "amdgpu_bl2"
+
+[nightlight]
+enabled = true
+force = false
+temperature_day = 6500
+temperature_night = 4000
+
+[lockscreen]
+lock_before_suspend = true
+blurred_desktop = false
+
+[idle.behavior.lock]
+enabled = false
+timeout = 660
+action = "lock"
+
+[idle.behavior.screen-off]
+enabled = false
+timeout = 600
+action = "screen_off"
+
+[desktop_widgets]
+enabled = false
+
+[system.monitor]
+enabled = true
+
+[widget.cpu-temp]
+type = "sysmon"
+stat = "cpu_temp"
+visualization = "none"
+show_glyph = false
+show_value = true
+label_show_units = true
+
+[widget.cpu-usage]
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "none"
+show_glyph = false
+show_value = true
+label_show_units = true
+
+[widget.ram-usage]
+type = "sysmon"
+stat = "ram_used"
+visualization = "none"
+show_glyph = false
+show_value = true
+label_show_units = true
+
+[dock]
+enabled = false
+
+[bar.main]
+position = "top"
+background_opacity = 0.0
+radius = 12
+margin_ends = 20
+margin_edge = 4
+padding = 2
+widget_spacing = 6
+shadow = false
+reserve_space = true
+start = ["workspaces", "cpu-temp", "cpu-usage", "ram-usage", "active-window"]
+center = ["clock"]
+end = ["tray", "notifications", "volume", "brightness", "battery", "control-center", "launcher"]
+
+[widget.clock]
+format = "{:%I:%M %p - %d /%b}"
+vertical_format = "{:%H %M - %d %m}"
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[control_center]
+show_shortcut_labels = true
+
+[plugins]
+enabled = []
+auto_update = "none"
