@@ -17,7 +17,6 @@ binds {
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
     Mod+S                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
-    Mod+I                               hotkey-overlay-title="Open IDE: Zed" { spawn "zeditor"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
 
@@ -33,6 +32,8 @@ binds {
     XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
     XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media playPause"; }
     XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media playPause"; }
+    XF86AudioMedia                      allow-when-locked=true { spawn-sh "~/.local/bin/toggle-audio.sh"; }
+    Mod+A                               allow-when-locked=true { spawn-sh "~/.local/bin/toggle-audio.sh"; }
 
     // ─── Brightness Controls ───
     XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
