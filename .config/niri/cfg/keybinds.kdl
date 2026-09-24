@@ -11,12 +11,13 @@ binds {
     // --- Plugins ---
     Mod+V                               hotkey-overlay-title="Open Clipboard" { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+Z                               hotkey-overlay-title="Open Zed history" { spawn-sh "noctalia msg panel-toggle launcher /zed "; }
-    Mod+Period                          hotkey-overlay-title="Search Kaomoji" { spawn-sh "noctalia msg panel-toggle launcher /kaomoji "; }
+    Mod+Period                          hotkey-overlay-title="Search Kaomoji" { spawn-sh "noctalia msg panel-toggle launcher /emo "; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
     Mod+S                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
+    Mod+O                               { spawn "obsidian"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
 
@@ -24,7 +25,7 @@ binds {
     Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
     // ─── Media Controls ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioRaiseVolume                { spawn-sh "noctalia msg volume-up"; }
     XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
     XF86AudioMute                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
     XF86AudioMicMute                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
@@ -36,8 +37,10 @@ binds {
     Mod+A                               allow-when-locked=true { spawn-sh "~/.local/bin/toggle-audio.sh"; }
 
     // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+    XF86MonBrightnessUp                 { spawn-sh "noctalia msg brightness-up"; }
+    Shift+XF86AudioNext                   { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown               { spawn-sh "noctalia msg brightness-down"; }
+    Shift+XF86AudioPrev                   { spawn-sh "noctalia msg brightness-down"; }
     Mod+N                               { spawn-sh "noctalia msg nightlight-toggle"; }
 
     // ─── Window Movement and Focus ───
@@ -149,5 +152,5 @@ binds {
     // ─── Exit / Power ───
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
     Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
-    Mod+O                               repeat=false { toggle-overview; }
+    Mod+ALT+O                               repeat=false { toggle-overview; }
 }
