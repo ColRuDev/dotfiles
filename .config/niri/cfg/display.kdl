@@ -7,3 +7,12 @@
     mode "2560x1440@359.979" // Set resolution and refresh rate
     scale 1 // No scaling (use 2 for HiDPI)
 }
+
+output "Lenovo Group Limited 0x9059 Unknown" {
+    scale 1.25
+    mode "1920x1080@120.000"
+}
+
+output "LG Electronics LG FHD 606NTZNHK901" {
+    mode "1920x1080@60.000"
+}
