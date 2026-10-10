@@ -26,11 +26,11 @@
       opacity 0.85
       background-effect {
           xray true
-     
+
       }
       popups {
           opacity 1.0
-      
+
       }
     }
 
@@ -42,6 +42,11 @@
     window-rule {
       match app-id="discord"
       opacity 0.85
+    }
+
+    window-rule {
+      match app-id="md.obsidian.Obsidian"
+      opacity 0.95
     }
 
     layer-rule {
