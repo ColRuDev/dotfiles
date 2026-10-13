@@ -40,7 +40,7 @@ end
 abbr -a fup flatpak update
 
 # AI tools abbreviations
-abbr -a oc tmux new-session \"command opencode\"
+abbr -a oc opencode
 abbr -a gai gentle-ai
 
 # Editors abbreviations
