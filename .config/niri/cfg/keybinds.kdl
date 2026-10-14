@@ -16,8 +16,9 @@ binds {
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
     Mod+S                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    XF86Search                          { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
-    Mod+Shift+O                         hotkey-overlay-title="Open Browser: Obsidian" { spawn "obsidian"; }
+    Mod+O                               hotkey-overlay-title="Open Browser: Obsidian" { spawn "obsidian"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
 
@@ -152,5 +153,5 @@ binds {
     // ─── Exit / Power ───
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
     Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
-    Mod+O                               repeat=false { toggle-overview; }
+    Mod+D                               repeat=false { toggle-overview; }
 }
